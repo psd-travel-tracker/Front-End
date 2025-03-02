@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Trip from "./Trip.js";
 
 export default function Square() {
     const [data, setData] = useState([]);
@@ -16,7 +17,6 @@ export default function Square() {
             }
 
             const jsonData = await response.json();
-            console.log(jsonData);
 
             setData(jsonData.data);
             setLoading(false);
@@ -36,10 +36,9 @@ export default function Square() {
     if (error) {
         return <p style={{color: "red"}}>Error: {error.message}</p>;
     }
-    // TODO: Make a reusable component for <Trip></Trip>
-    // 
+
     return data ?
-        data.map( trip => <button className="square">{trip.name}</button> )
+        data.map( trip => <Trip Name={trip.name}></Trip> )
     : <></>;
 
 }
