@@ -7,8 +7,6 @@ export default function Square() {
 
     async function fetchData() {
         try {
-            console.log("We are here");
-
             // Get trips - we are hitting the trips endpoint
             const response = await fetch('http://localhost:3001/trips');
             if (!response.ok) {
