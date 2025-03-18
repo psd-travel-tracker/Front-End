@@ -31,7 +31,7 @@ export default function Square() {
     }, []);
     
     if (loading) {
-        return <p>Loading data...</p>;
+        return <p>Fetching Data...</p>;
     }
     if (error) {
         return <p style={{color: "red"}}>Error: {error.message}</p>;
