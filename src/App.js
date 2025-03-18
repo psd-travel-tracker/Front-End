@@ -34,7 +34,7 @@ export default function Square() {
         return <p>Fetching Data...</p>;
     }
     if (error) {
-        return <p style={{color: "red"}}>Error: {error.message}</p>;
+        return <p style={{color: "red"}}>ERROR: {error.message}</p>;
     }
 
     return data ?
