@@ -1,5 +1,5 @@
 
-export function HomePage() {
+export default function HomePage() {
     return (
         <div>
             <h1 className="welcome-title">Welcome to Travel Tracker!</h1>

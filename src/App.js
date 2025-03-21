@@ -1,8 +1,31 @@
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import LoginPage from "./Pages/LoginPage";
+import RegisterPage from "./Pages/RegisterPage";
+import ViewTrips from "./Pages/ViewTrips";
+import CreateNewTrip from "./Pages/CreateNewTrip";
+import ActiveTripDetails from "./Pages/ActiveTripDetails";
+
+export default function App() {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/login" element={<LoginPage />} /> 
+                <Route path="/register" element={<RegisterPage/>} /> 
+                <Route path="/" element={<ViewTrips/>} />
+                <Route path="/create-new-trip" element={<CreateNewTrip/>} />
+                <Route path="/active-trip-details" element={<ActiveTripDetails/>} />
+            </Routes>
+        </Router>
+    );
+}
+
+/*Everything here will likely need to be moved out soon app is meant to be pretty bare bones with most of the work going on in each page */
+/*
 import { useEffect, useState } from "react";
 import Trip from "./Trip.js"; // Imports the trip component
 import  ViewTrips  from "./Pages/ViewTrips.jsx";
 
-export default function Square() {
+export function RequestTripData() {
     // State variables to store the data, loading state, and error state
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -43,6 +66,6 @@ export default function Square() {
     )
    {/*return data ?
         data.map( trip => <Trip Name={trip.name}></Trip> )
-    : <></>;*/}
+    : <></>;
 
-}
+}*/
