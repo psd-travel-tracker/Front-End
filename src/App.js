@@ -1,7 +1,32 @@
-import { useEffect, useState } from "react";
-import Trip from "./Trip.js";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import LoginPage from "./Pages/LoginPage";
+import RegisterPage from "./Pages/RegisterPage";
+import ViewTrips from "./Pages/ViewTrips";
+import CreateNewTrip from "./Pages/CreateNewTrip";
+import TripDetails from "./Pages/TripDetails";
 
-export default function Square() {
+export default function App() {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/login" element={<LoginPage />} /> 
+                <Route path="/register" element={<RegisterPage/>} /> 
+                <Route path="/" element={<ViewTrips/>} />
+                <Route path="/create-new-trip" element={<CreateNewTrip/>} />
+                <Route path="/trip-details/:id" element={<TripDetails/>} />
+            </Routes>
+        </Router>
+    );
+}
+
+/*Everything here will likely need to be moved out soon app is meant to be pretty bare bones with most of the work going on in each page */
+/*
+import { useEffect, useState } from "react";
+import Trip from "./Trip.js"; // Imports the trip component
+import  ViewTrips  from "./Pages/ViewTrips.jsx";
+
+export function RequestTripData() {
+    // State variables to store the data, loading state, and error state
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -9,7 +34,7 @@ export default function Square() {
     async function fetchData() {
         try {
             // Get trips - we are hitting the trips endpoint
-            const response = await fetch('http://localhost:3001/trips');
+            const response = await fetch('http://localhost:3001/trips'); 
             if (!response.ok) {
                 console.log({"pre-throw": response.status});
 
@@ -36,9 +61,11 @@ export default function Square() {
     if (error) {
         return <p style={{color: "red"}}>ERROR: {error.message}</p>;
     }
-
-    return data ?
+    return(
+        <ViewTrips data={data}/>
+    )
+   {/*return data ?
         data.map( trip => <Trip Name={trip.name}></Trip> )
     : <></>;
 
-}
+}*/
