@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import Trip from "./Trip.js";
+import Trip from "./Trip.js"; // Imports the trip component
+import  ViewTrips  from "./Pages/ViewTrips.jsx";
 
 export default function Square() {
+    // State variables to store the data, loading state, and error state
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -9,7 +11,7 @@ export default function Square() {
     async function fetchData() {
         try {
             // Get trips - we are hitting the trips endpoint
-            const response = await fetch('http://localhost:3001/trips');
+            const response = await fetch('http://localhost:3001/trips'); 
             if (!response.ok) {
                 console.log({"pre-throw": response.status});
 
@@ -36,9 +38,11 @@ export default function Square() {
     if (error) {
         return <p style={{color: "red"}}>ERROR: {error.message}</p>;
     }
-
-    return data ?
+    return(
+        <ViewTrips data={data}/>
+    )
+   {/*return data ?
         data.map( trip => <Trip Name={trip.name}></Trip> )
-    : <></>;
+    : <></>;*/}
 
 }
