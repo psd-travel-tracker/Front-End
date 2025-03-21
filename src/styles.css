@@ -56,6 +56,25 @@
     padding: 0;
   }
   
+  .welcome-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  .create-trip-button {
+    width: 90%;
+    max-width: 600px;
+    margin: 10px auto;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    background-color: #30d036;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+  }
   .trip-view-button {
     width: 90%;
     max-width: 600px;

@@ -3,7 +3,7 @@ import LoginPage from "./Pages/LoginPage";
 import RegisterPage from "./Pages/RegisterPage";
 import ViewTrips from "./Pages/ViewTrips";
 import CreateNewTrip from "./Pages/CreateNewTrip";
-import ActiveTripDetails from "./Pages/ActiveTripDetails";
+import TripDetails from "./Pages/TripDetails";
 
 export default function App() {
     return (
@@ -13,7 +13,7 @@ export default function App() {
                 <Route path="/register" element={<RegisterPage/>} /> 
                 <Route path="/" element={<ViewTrips/>} />
                 <Route path="/create-new-trip" element={<CreateNewTrip/>} />
-                <Route path="/active-trip-details" element={<ActiveTripDetails/>} />
+                <Route path="/trip-details/:id" element={<TripDetails/>} />
             </Routes>
         </Router>
     );
