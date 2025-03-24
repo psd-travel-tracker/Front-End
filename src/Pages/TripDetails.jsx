@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Chart from '../Components/Chart';
+import '../Style/tripdetails.css';
+import ExpenseList from '../Components/ExpenseList';
 
 export default function TripDetails() {
     const { id } = useParams();
@@ -44,6 +46,7 @@ export default function TripDetails() {
             <h1>Trip Name: {tripName}</h1>
             <p>Details about the trip with ID: {id}</p>
             <Chart />
+            <ExpenseList/>
             <p>Scrollable Expenses Area and Button to add new expense</p>
         </div>
     )
