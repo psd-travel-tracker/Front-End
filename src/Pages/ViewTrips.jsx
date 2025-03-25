@@ -37,15 +37,17 @@ export default function ViewTrips() {
     }, []);
 
     if (loading) {
-        return <p>Fetching Data...</p>;
+        return <p style={{color: "#BC6C25"}}>Fetching Data...</p>;
     }
     if (error) {
         return <p style={{color: "red"}}>ERROR: {error.message}</p>;
     }
     return(
         <div>
+            {/* TODO: add a navigation menu component */}
+            {/* <NavMenu/> */}
             <h1 className="welcome-title">Trips</h1>
-            <button className="create-trip-button" onClick={() => navigate('/create-new-trip')}>Create New Trip!</button>
+            <button className="create-trip-button" onClick={() => navigate('/create-new-trip')}>Add a trip</button>
             <Trips data={data}/>
             <br/>
         </div>
