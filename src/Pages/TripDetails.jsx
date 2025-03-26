@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Chart from '../Components/Chart';
-import '../Style/tripdetails.css';
+import '../Style/trip_details.css';
 import ExpenseList from '../Components/ExpenseList';
 
 export default function TripDetails() {
