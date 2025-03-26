@@ -1,5 +1,5 @@
 import React from 'react';
-import Trips from '../Components/Trips.js';
+import Trip from '../Components/Trip.jsx';
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
@@ -46,7 +46,13 @@ export default function ViewTrips() {
         <div>
             <h1 className="welcome-title">Trips</h1>
             <button className="create-trip-button" onClick={() => navigate('/create-new-trip')}>Create New Trip!</button>
-            <Trips data={data}/>
+            { data && data.length ?
+                <div className="trips-wrapper">
+                    {data.map( trip => 
+                        <Trip key={`TripId_${trip.id}`} TripId={trip.id} Trip={trip}/>
+                    )}
+                </div>
+                : <p>No Trips Found</p> }
             <br/>
         </div>
     )
