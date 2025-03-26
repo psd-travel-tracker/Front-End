@@ -1,4 +1,4 @@
-import '../Style/tripdetails.css'; 
+import '../Style/trip_details.css'; 
 
 export default function ExpenseCard({ name, cost }) {
     return (
