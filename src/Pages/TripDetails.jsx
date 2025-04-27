@@ -3,8 +3,11 @@ import { useState, useEffect } from 'react';
 import Chart from '../Components/Chart';
 import '../Style/trip_details.css';
 import ExpenseList from '../Components/ExpenseList';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function TripDetails() {
+    const navigate = useNavigate();
     const { id } = useParams();
     const [tripName, setTripName] = useState('');
     const [loading, setLoading] = useState(true);
@@ -43,11 +46,11 @@ export default function TripDetails() {
 
     return (
         <div>
-            <h1>Trip Name: {tripName}</h1>
+            <h1>{tripName}</h1>
             <p>Details about the trip with ID: {id}</p>
             <Chart />
-            <ExpenseList/>
-            <p>Scrollable Expenses Area and Button to add new expense</p>
+            <ExpenseList tripId={id}/>
+            <button className="create-trip-button" onClick={() => navigate(`/trip-details/${id}/create-expense`)}>Add expense</button>
         </div>
     )
 }
