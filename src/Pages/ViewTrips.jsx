@@ -18,7 +18,6 @@ export default function ViewTrips() {
             const response = await fetch('http://localhost:3001/trips'); 
             if (!response.ok) {
                 console.log({"pre-throw": response.status});
-
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
@@ -32,7 +31,6 @@ export default function ViewTrips() {
         }
     }
     useEffect(() => {
-
         fetchData();
     }, []);
 
