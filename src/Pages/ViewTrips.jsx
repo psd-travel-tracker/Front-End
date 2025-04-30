@@ -49,7 +49,8 @@ export default function ViewTrips() {
             { data && data.length ?
                 <div className="trips-wrapper">
                     {data.map( trip => 
-                        <Trip key={`TripId_${trip.id}`} TripId={trip.id} Trip={trip}/>
+                        <Trip key={`TripId_${trip.id}`} TripId={trip.id} Trip={trip} showMenu={true} />
+
                     )}
                 </div>
                 : <p>No Trips Found</p> }
