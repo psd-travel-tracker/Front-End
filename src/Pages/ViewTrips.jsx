@@ -49,7 +49,7 @@ export default function ViewTrips() {
             { data && data.length ?
                 <div className="trips-wrapper">
                     {data.map( trip => 
-                        <Trip key={`TripId_${trip.id}`} TripId={trip.id} Trip={trip} showMenu={true} />
+                        <Trip key={`TripId_${trip.id}`} TripId={trip.id} Trip={trip} showMenu={true}  onDelete={fetchData}/>
 
                     )}
                 </div>

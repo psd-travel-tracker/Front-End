@@ -3,7 +3,8 @@ import "../Style/trip.css";
 import { useState } from 'react';
 
 
-export default function Trip({ TripId, Trip, showMenu = false }) {
+export default function Trip({ TripId, Trip, showMenu = false, onDelete }) {
+
     const navigate = useNavigate();
     const TripName = Trip.name;
     // TODO: Filler data until we audit our schema now that we have a better idea what the UI requires
@@ -17,12 +18,13 @@ export default function Trip({ TripId, Trip, showMenu = false }) {
     // delete trip functionality
     function handleDeleteTrip(e) {
         e.stopPropagation(); // prevents triggering card navigation
-        fetch(`http://localhost:3000/trips/${TripId}`, {
+        fetch(`http://localhost:3001/trips/${TripId}`, {
             method: 'DELETE'
         })
         .then(res => res.json())
         .then(data => {
             console.log(data.message);
+            if (onDelete) onDelete();
             // Optional: refresh parent list or notify deletion
         })
         .catch(err => console.error('Failed to delete trip:', err));
@@ -34,7 +36,7 @@ export default function Trip({ TripId, Trip, showMenu = false }) {
     }
     // TODO: create reusable components where we can and replace filler data with actual trip data pulled from updated schema
     return (
-        <div className="trip-card" onClick={() => navigate(`/trip-details/${TripId}`)}>
+        <div className="trip-card" >
         <div className="trip-image" />
         
         {/* 3-dot vertical menu */}
@@ -57,7 +59,7 @@ export default function Trip({ TripId, Trip, showMenu = false }) {
         )}
 
     
-        <div className="trip-content">
+        <div className="trip-content" onClick={() => navigate(`/trip-details/${TripId}`)}>
             <div className="trip-dates">{StartDate} - {EndDate}</div>
             <h2 className="trip-title">{TripName}</h2>
             <div className="trip-location"><span className="location-icon">*</span>{Location}</div>
