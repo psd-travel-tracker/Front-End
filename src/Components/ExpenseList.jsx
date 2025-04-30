@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import ExpenseCard from './ExpenseCard';
 import '../Style/trip_details.css';
 
-export default function ExpenseList({tripId}) {
+export default function ExpenseList({tripId},) {
   // State variables to store the data, loading state, and error state
-  const [data, setData] = useState([]);
+ /* const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -37,12 +37,18 @@ export default function ExpenseList({tripId}) {
   if (error) {
       return <p style={{color: "red"}}>ERROR: {error.message}</p>;
   }
+  */
+  function handleEdit(expense) {
+    console.log("Edit expense:", expense);
+  }
+  
+  function handleDelete(expenseId) {
+    console.log("Delete expense with ID:", expenseId);
+  }
 
   return (
     <div className="expense-list-container">
-      {data.map(exp => (
-        <ExpenseCard key={exp.id} name={exp.name} cost={exp.cost} />
-      ))}
+      Hello
     </div>
   );
 }
