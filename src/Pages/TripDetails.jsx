@@ -72,7 +72,7 @@ export default function TripDetails() {
         <div>
             <h1 className= "Trip-Detail-trip-title">{tripName}</h1>
             <p>Details about the trip with ID: {id}</p>
-            <Chart />
+            <Chart expenses = {expenses}/>
             <button className="create-trip-button" onClick={() => 
             navigate(`/trip-details/${id}/create-expense`)}>
             Add expense
