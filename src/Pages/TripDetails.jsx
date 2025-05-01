@@ -6,7 +6,7 @@ import ExpenseList from '../Components/ExpenseList';
 import { useNavigate } from 'react-router-dom';
 import NavMenu from '../Components/NavMenu';
 
-
+ 
 export default function TripDetails() {
     const navigate = useNavigate();
     const { id } = useParams();
@@ -102,7 +102,7 @@ export default function TripDetails() {
             navigate(`/trip-details/${id}/create-expense`)}>
             Add expense
             </button>
-            <ExpenseList expenses={expenses}/>
+            <ExpenseList expenses={expenses} onDelete={fetchExpenses}/>
             <br/><br/><br/>
             <NavMenu/>
         </div>

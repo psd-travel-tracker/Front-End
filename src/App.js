@@ -6,6 +6,7 @@ import CreateNewTrip from "./Pages/CreateNewTrip";
 import TripDetails from "./Pages/TripDetails";
 import CreateExpense from "./Pages/CreateExpense";
 import AccountDetails from "./Pages/AccountDetails";
+import AddNewExpense from "./Pages/AddNewExpense";
 
 export default function App() {
     const storedUserId = localStorage.getItem('userId');
@@ -18,8 +19,9 @@ export default function App() {
                     <Route path="/register" element={<RegisterPage/>} /> 
                     <Route path="/view-trips" element={<ViewTrips/>} />
                     <Route path="/create-new-trip" element={<CreateNewTrip/>} />
-                    <Route path="/trip-details/:id/create-expense" element={<CreateExpense/>} />
-                    <Route path="/create-expense" element={<CreateExpense/>} />
+                    <Route path="/trip-details/:id/create-expense" element={<CreateExpense isEdit={false}/>} />
+                    <Route path="/trip-details/:id/edit-expense" element={<CreateExpense isEdit={true} />} />
+                    <Route path="/add-new-expense" element={<AddNewExpense/>} />
                     <Route path="/trip-details/:id" element={<TripDetails/>} />
                     <Route path="/account-details" element={<AccountDetails/>}/>
                 </Routes>

@@ -3,7 +3,7 @@ import Trip from '../Components/Trip.jsx';
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import NavMenu from '../Components/NavMenu.jsx';
-
+ 
 
 export default function ViewTrips() {
 // State variables to store the data, loading state, and error state

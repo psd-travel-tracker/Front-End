@@ -29,7 +29,7 @@ export default function Trip({ TripId, Trip, showMenu = false, onDelete }) {
         })
         .catch(err => console.error('Failed to delete trip:', err));
     }
-
+ 
     function handleEditTrip(e) {
         e.stopPropagation(); // prevents triggering card navigation
         console.log("Edit trip clicked");
