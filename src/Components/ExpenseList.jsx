@@ -2,6 +2,8 @@ import React from 'react';
 import { useEffect, useState } from "react";
 import ExpenseCard from './ExpenseCard';
 import '../Style/trip_details.css';
+import { categoryMap } from '../utils/categoryMap';
+
 
 export default function ExpenseList({ expenses }) {
   function handleEdit(expense) {
@@ -21,7 +23,7 @@ export default function ExpenseList({ expenses }) {
             key={exp.id}
             name={exp.name}
             cost={exp.cost}
-            category={exp.categoryId}
+            category={categoryMap[exp.categoryId]} 
             onEdit={() => handleEdit(exp)}
             onDelete={() => handleDelete(exp.id)}
           />

@@ -68,11 +68,24 @@ export default function TripDetails() {
     if (expenseLoading) return <p>Expense Loading...</p>;
     if (expenseError) return <p>Expense Error: {expenseError.message}</p>;
 
+    if (expenses.length === 0) {
+        return (
+          <div className="empty-expense-state">
+            <h3>No expenses yet!</h3>
+            <p>Start planning your trip by adding your first expense below.</p>
+            <button onClick={() => navigate(`/trip-details/${id}/create-expense`)}>
+              + Add Expense
+            </button>
+          </div>
+        );
+      }
     return (
-        <div>
+        <div className="trip-details-container">
             <h1 className= "Trip-Detail-trip-title">{tripName}</h1>
-            <p>Details about the trip with ID: {id}</p>
-            <Chart />
+            <p className="trip-subtext">Details about the trip with ID: {id}</p>
+            <div className="chart-wrapper">
+            <Chart expenses = {expenses}/>
+            </div>
             <button className="create-trip-button" onClick={() => 
             navigate(`/trip-details/${id}/create-expense`)}>
             Add expense
