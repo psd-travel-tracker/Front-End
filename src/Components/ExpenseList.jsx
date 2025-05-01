@@ -2,7 +2,6 @@ import React from 'react';
 import { useEffect, useState } from "react";
 import ExpenseCard from './ExpenseCard';
 import '../Style/trip_details.css';
-//import '../Style/trip_detail_alt.css';
 import { categoryMap } from '../utils/categoryMap';
 
 

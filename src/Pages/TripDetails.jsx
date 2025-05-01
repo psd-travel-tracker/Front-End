@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Chart from '../Components/Chart';
 import '../Style/trip_details.css';
-//import '../Style/trip_detail_alt.css';
 import ExpenseList from '../Components/ExpenseList';
 import { useNavigate } from 'react-router-dom';
 
