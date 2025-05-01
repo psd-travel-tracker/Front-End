@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
+import NavMenu from "../Components/NavMenu";
 import { reverseCategoryMap } from '../utils/categoryMap.js';
 import '../Style/create_expense.css'; 
 
@@ -67,6 +68,7 @@ export default function CreateExpense() {
     };
 
     return (
+        <>
         <form onSubmit={handleSubmit}>
             <h1 className="welcome-title">Add a new expense</h1>
             <button className="back-button" onClick={() => navigate(`/trip-details/${id}`)}>
@@ -101,5 +103,8 @@ export default function CreateExpense() {
                 <input type="submit" className="button" value="submit"/>
             </div>
         </form>
+        <br/><br/><br/>
+        <NavMenu/>
+        </>
     );
 }

@@ -4,6 +4,7 @@ import Chart from '../Components/Chart';
 import '../Style/trip_details.css';
 import ExpenseList from '../Components/ExpenseList';
 import { useNavigate } from 'react-router-dom';
+import NavMenu from '../Components/NavMenu';
 
 
 export default function TripDetails() {
@@ -27,7 +28,6 @@ export default function TripDetails() {
 
             const jsonData = await response.json();
 
-            // Assuming jsonData.data is an array of trips
             const matchingTrip = jsonData.data.find(trip => trip.id == id);
             if (matchingTrip) {
                 setTripName(matchingTrip.name);
@@ -63,20 +63,32 @@ export default function TripDetails() {
         fetchExpenses();
       }, []);
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error.message}</p>;
-    if (expenseLoading) return <p>Expense Loading...</p>;
-    if (expenseError) return <p>Expense Error: {expenseError.message}</p>;
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+    if (error){
+        return <p>Error: {error.message}</p>;
+    }
+    if (expenseLoading) {
+        return <p>Expense Loading...</p>;
+    }
+    if (expenseError) {
+        return <p>Expense Error: {expenseError.message}</p>;
+    }
 
     if (expenses.length === 0) {
         return (
-          <div className="empty-expense-state">
-            <h3>No expenses yet!</h3>
-            <p>Start planning your trip by adding your first expense below.</p>
-            <button onClick={() => navigate(`/trip-details/${id}/create-expense`)}>
-              + Add Expense
-            </button>
-          </div>
+            <>
+            <div className="empty-expense-state">
+                <h3>No expenses yet!</h3>
+                <p>Start planning your trip by adding your first expense below.</p>
+                <button onClick={() => navigate(`/trip-details/${id}/create-expense`)}>
+                + Add Expense
+                </button>
+            </div>
+            <br/><br/><br/>
+            <NavMenu/>
+            </>
         );
       }
     return (
@@ -91,7 +103,8 @@ export default function TripDetails() {
             Add expense
             </button>
             <ExpenseList expenses={expenses}/>
-            
+            <br/><br/><br/>
+            <NavMenu/>
         </div>
     )
 }

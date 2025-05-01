@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import NavMenu from "../Components/NavMenu";
 
 export default function CreateNewTrip() {
     const navigate = useNavigate();
@@ -61,6 +62,7 @@ export default function CreateNewTrip() {
     };
 
     return (
+        <>
         <form onSubmit={handleSubmit}>
             <h1 className="welcome-title">Create New Trip</h1>
             <div className="formWrapper">
@@ -75,5 +77,8 @@ export default function CreateNewTrip() {
                 <input type="submit" className="button" value="submit"/>
             </div>
         </form>
+        <br/><br/><br/>
+        <NavMenu/>
+        </>
     );
 }
