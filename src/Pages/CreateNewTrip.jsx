@@ -40,7 +40,7 @@ export default function CreateNewTrip() {
 
             const jsonData = await response.json();
 
-            navigate('/');
+            navigate('/view-trips');
         } catch (error) {
             setError(error);
             setLoading(false);

@@ -7,6 +7,8 @@ import NavMenu from '../Components/NavMenu.jsx';
 
 export default function ViewTrips() {
 // State variables to store the data, loading state, and error state
+    const storedUserId = localStorage.getItem('userId');
+    const userId = storedUserId ? JSON.parse(storedUserId) : null;
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -15,6 +17,7 @@ export default function ViewTrips() {
 
     async function fetchData() {
         try {
+            // TODO: we can fetch trips by user id now!
             const response = await fetch('http://localhost:3001/trips'); 
             if (!response.ok) {
                 console.log({"pre-throw": response.status});
@@ -42,10 +45,10 @@ export default function ViewTrips() {
     if (error) {
         return <p style={{color: "red"}}>ERROR: {error.message}</p>;
     }
-
+    
     return(
         <div>
-            <h1 className="welcome-title">Trips</h1>
+            <h1 className="welcome-title">Trips for {userId}</h1>
             <button className="create-trip-button" onClick={() => navigate('/create-new-trip')}>Add a trip</button>
             { data && data.length ?
                 <div className="trips-wrapper">

@@ -19,4 +19,5 @@
 .NavButton {
     border: none;
     background: none;
+    padding: "unset";
 }
