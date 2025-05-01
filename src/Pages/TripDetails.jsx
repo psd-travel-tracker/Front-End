@@ -4,6 +4,7 @@ import Chart from '../Components/Chart';
 import '../Style/trip_details.css';
 import ExpenseList from '../Components/ExpenseList';
 import { useNavigate } from 'react-router-dom';
+import NavMenu from '../Components/NavMenu';
 
 
 export default function TripDetails() {
@@ -22,7 +23,6 @@ export default function TripDetails() {
 
             const jsonData = await response.json();
 
-            // Assuming jsonData.data is an array of trips
             const matchingTrip = jsonData.data.find(trip => trip.id == id);
             if (matchingTrip) {
                 setTripName(matchingTrip.name);
@@ -41,8 +41,12 @@ export default function TripDetails() {
         fetchAllTrips();
     }, [id]);
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error.message}</p>;
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+    if (error){
+        return <p>Error: {error.message}</p>;
+    }
 
     return (
         <div>
@@ -51,6 +55,8 @@ export default function TripDetails() {
             <Chart />
             <ExpenseList tripId={id}/>
             <button className="create-trip-button" onClick={() => navigate(`/trip-details/${id}/create-expense`)}>Add expense</button>
+            <br/><br/><br/>
+            <NavMenu/>
         </div>
     )
 }

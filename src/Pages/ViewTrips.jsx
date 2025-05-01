@@ -2,6 +2,7 @@ import React from 'react';
 import Trip from '../Components/Trip.jsx';
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import NavMenu from '../Components/NavMenu.jsx';
 
 
 export default function ViewTrips() {
@@ -14,7 +15,6 @@ export default function ViewTrips() {
 
     async function fetchData() {
         try {
-            // Get trips - we are hitting the trips endpoint
             const response = await fetch('http://localhost:3001/trips'); 
             if (!response.ok) {
                 console.log({"pre-throw": response.status});
@@ -30,6 +30,7 @@ export default function ViewTrips() {
             setLoading(false);
         }
     }
+
     useEffect(() => {
         fetchData();
     }, []);
@@ -37,13 +38,13 @@ export default function ViewTrips() {
     if (loading) {
         return <p style={{color: "#BC6C25"}}>Fetching Data...</p>;
     }
+
     if (error) {
         return <p style={{color: "red"}}>ERROR: {error.message}</p>;
     }
+
     return(
         <div>
-            {/* TODO: add a navigation menu component */}
-            {/* <NavMenu/> */}
             <h1 className="welcome-title">Trips</h1>
             <button className="create-trip-button" onClick={() => navigate('/create-new-trip')}>Add a trip</button>
             { data && data.length ?
@@ -54,8 +55,8 @@ export default function ViewTrips() {
                     )}
                 </div>
                 : <p>No Trips Found</p> }
-            <br/>
+            <br/><br/><br/>
+            <NavMenu/>
         </div>
     )
-
 }

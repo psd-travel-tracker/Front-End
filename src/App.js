@@ -15,6 +15,7 @@ export default function App() {
                 <Route path="/" element={<ViewTrips/>} />
                 <Route path="/create-new-trip" element={<CreateNewTrip/>} />
                 <Route path="/trip-details/:id/create-expense" element={<CreateExpense/>} />
+                <Route path="/create-expense" element={<CreateExpense/>} />
                 <Route path="/trip-details/:id" element={<TripDetails/>} />
             </Routes>
         </Router>
