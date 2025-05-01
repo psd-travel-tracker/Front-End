@@ -3,12 +3,19 @@ import { useEffect, useState } from "react";
 import ExpenseCard from './ExpenseCard';
 import '../Style/trip_details.css';
 import { categoryMap } from '../utils/categoryMap';
+import {useNavigate} from 'react-router-dom';
 
 
+ 
 export default function ExpenseList({ expenses, onDelete }) {
+  const navigate = useNavigate();
+
+
   function handleEdit(expense) {
-    console.log("Edit expense:", expense);
-  }
+  navigate(`/trip-details/${expense.tripId}/edit-expense`, {
+    state: { expense }  // pass the full object using navigation state
+  });
+}
 
   function handleDelete(expenseId) {
     fetch(`http://localhost:3001/expenses/${expenseId}`, {

@@ -14,7 +14,8 @@ export default function App() {
                 <Route path="/register" element={<RegisterPage/>} /> 
                 <Route path="/" element={<ViewTrips/>} />
                 <Route path="/create-new-trip" element={<CreateNewTrip/>} />
-                <Route path="/trip-details/:id/create-expense" element={<CreateExpense/>} />
+                <Route path="/trip-details/:id/create-expense" element={<CreateExpense isEdit={false}/>} />
+                <Route path="/trip-details/:id/edit-expense" element={<CreateExpense isEdit={true} />} />
                 <Route path="/create-expense" element={<CreateExpense/>} />
                 <Route path="/trip-details/:id" element={<TripDetails/>} />
             </Routes>
