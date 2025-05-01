@@ -3,21 +3,32 @@ import { useNavigate, useParams } from 'react-router-dom';
 import NavMenu from "../Components/NavMenu";
 import { reverseCategoryMap } from '../utils/categoryMap.js';
 import '../Style/create_expense.css'; 
+import {useLocation } from 'react-router-dom';
 
-export default function CreateExpense() {
+
+export default function CreateExpense({isEdit = false}) {
     const navigate = useNavigate();
     const {id} = useParams();
+    
+    const location = useLocation();
+    const existingExpense = location.state?.expense; // Get the existing expense from the location state
+
     const [data, setData] = useState([]); //this isn't used?? and neither is the loading or error
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    
+
     const [formData, setFormData] = useState({
-        name: "",
-        description: "",
-        cost: "",
-        category: "Other" // Default category
+        name: existingExpense?.name || "",
+        description: existingExpense?.description || "",
+        cost: existingExpense?.cost || "",
+        category: existingExpense
+            ? Object.keys(reverseCategoryMap).find(
+                key => reverseCategoryMap[key] === existingExpense.categoryId
+              )
+            : "Other" // Default to "Other" if no existing expense
     });
     
+
     async function createExpense(formData) {
         try {
             setLoading(true);
@@ -54,31 +65,76 @@ export default function CreateExpense() {
         }
     }
 
+    async function updateExpense(formData) {
+        try {
+            setLoading(true);
+            const updatedExpense = {
+                name: formData.name,
+                description: formData.description,
+                cost: formData.cost,
+                categoryId: reverseCategoryMap[formData.category] || 1,
+                userId: 1,
+            };
+    
+            const response = await fetch(`http://localhost:3001/expenses/${existingExpense.id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(updatedExpense)
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+    
+            await response.json();
+            navigate(`/trip-details/${id}`);
+        } catch (error) {
+            setError(error);
+            setLoading(false);
+        }
+    }
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (isEdit) {
+            await updateExpense(formData);
+        } else {
+            await createExpense(formData);
+        }
+    };
+    
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent the default form submission
-        await createExpense(formData);
-    };
-
+        setFormData(prev => ({
+          ...prev,
+          [name]: value
+        }));
+      };
+      
     return (
         <>
         <form onSubmit={handleSubmit}>
-            <h1 className="welcome-title">Add a new expense</h1>
+            <h1 className="welcome-title">{isEdit ? 'Edit Expense' : 'Add a new expense'}</h1>
             <button className="back-button" onClick={() => navigate(`/trip-details/${id}`)}>
             ← Back to Trip
             </button>
             <div className="formWrapper">
                 <label htmlFor="name">name of expense:</label>
-                <input type="text" id="name" name="name" onChange={handleChange}/>
+                <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                />
                 <label htmlFor="description">description:</label>
-                <input type="text" id="description" name="description" onChange={handleChange}/>
+                <input
+                type="text"
+                id="description"
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                />
                 <label htmlFor="cost">cost:</label>
                 <input
                 type="number"
@@ -100,7 +156,7 @@ export default function CreateExpense() {
                     <option key={label} value={label}>{label}</option>
                 ))}
                 </select>
-                <input type="submit" className="button" value="submit"/>
+                <input type="submit" className="button" value={isEdit ? 'Update' : 'Submit'} />
             </div>
         </form>
         <br/><br/><br/>

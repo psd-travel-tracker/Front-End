@@ -5,6 +5,7 @@ import ViewTrips from "./Pages/ViewTrips";
 import CreateNewTrip from "./Pages/CreateNewTrip";
 import TripDetails from "./Pages/TripDetails";
 import CreateExpense from "./Pages/CreateExpense";
+import AddNewExpense from "./Pages/AddNewExpense";
 
 export default function App() {
     return (
@@ -14,8 +15,9 @@ export default function App() {
                 <Route path="/register" element={<RegisterPage/>} /> 
                 <Route path="/" element={<ViewTrips/>} />
                 <Route path="/create-new-trip" element={<CreateNewTrip/>} />
-                <Route path="/trip-details/:id/create-expense" element={<CreateExpense/>} />
-                <Route path="/create-expense" element={<CreateExpense/>} />
+                <Route path="/trip-details/:id/create-expense" element={<CreateExpense isEdit={false}/>} />
+                <Route path="/trip-details/:id/edit-expense" element={<CreateExpense isEdit={true} />} />
+                <Route path="/add-new-expense" element={<AddNewExpense/>} />
                 <Route path="/trip-details/:id" element={<TripDetails/>} />
             </Routes>
         </Router>
