@@ -30,7 +30,6 @@ export default function ExpenseList({ expenses, onDelete }) {
     return (
         <div className="expense-list-container">
             {expenses.map((exp) => {
-                console.log("Expense:", exp); // Debugging line to check expense data
                 return (
                     <ExpenseCard
                         key={exp.id}
