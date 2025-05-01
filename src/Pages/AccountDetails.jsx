@@ -22,7 +22,7 @@ export default function AccountPage() {
                             <p>{userProfile.email}</p>
                         </div>
                     </div>
-                    <button className="SignOutButton">Sign Out</button>
+                    <button className="SignOutButton" onClick={() => {localStorage.removeItem("userId"); navigate("/")}}>Sign Out</button>
                 </div>
                 
                 <div>
