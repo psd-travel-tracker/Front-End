@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
+import { reverseCategoryMap } from '../utils/categoryMap.js';
+//import '../Style/trip_details.css'; 
+import '../Style/create_expense.css'; // Assuming you have a CSS file for styling
 
 export default function CreateExpense() {
     const navigate = useNavigate();
     const {id} = useParams();
-    const [data, setData] = useState([]);
+    const [data, setData] = useState([]); //this isn't used?? and neither is the loading or error
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     
@@ -12,6 +15,7 @@ export default function CreateExpense() {
         name: "",
         description: "",
         cost: "",
+        category: "Other" // Default category
     });
     
     async function createExpense(formData) {
@@ -21,6 +25,10 @@ export default function CreateExpense() {
                 name: formData.name,
                 description: formData.description,
                 cost: formData.cost,
+                tripId: id,
+                categoryId: reverseCategoryMap[formData.category] || 1, // Default to 1 if not found
+                userId: 1,
+                //tripId: id // Assuming you have the tripId available in the form data
             };
             
             const response = await fetch(`http://localhost:3001/expenses?tripId=${id}`, {
@@ -61,14 +69,36 @@ export default function CreateExpense() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <h1 className="welcome-title">Add expense</h1>
+            <h1 className="welcome-title">Add a new expense</h1>
+            <button className="back-button" onClick={() => navigate(`/trip-details/${id}`)}>
+            ← Back to Trip
+            </button>
             <div className="formWrapper">
                 <label htmlFor="name">name of expense:</label>
                 <input type="text" id="name" name="name" onChange={handleChange}/>
                 <label htmlFor="description">description:</label>
                 <input type="text" id="description" name="description" onChange={handleChange}/>
                 <label htmlFor="cost">cost:</label>
-                <input type="text" id="cost" name="cost" onChange={handleChange}/>
+                <input
+                type="number"
+                step="any"
+                name="cost"
+                required
+                value={formData.cost}
+                onChange={handleChange}
+                />
+                <label htmlFor="category">category:</label>
+                <select
+                name="category"
+                value={formData.category}
+                required
+                onChange={handleChange}
+                >
+                <option value="">Select a category</option>
+                {Object.keys(reverseCategoryMap).map(label => (
+                    <option key={label} value={label}>{label}</option>
+                ))}
+                </select>
                 <input type="submit" className="button" value="submit"/>
             </div>
         </form>

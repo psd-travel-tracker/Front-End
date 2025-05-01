@@ -1,0 +1,130 @@
+/* Base container */
+.expense-form-container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Header */
+  .expense-form-container h2 {
+    text-align: center;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: #2d2d2d;
+  }
+  
+  /* Form structure */
+  .expense-form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  
+  /* Labels */
+  .expense-form-container label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #333;
+    gap: 0.5rem;
+  }
+  
+  /* Inputs */
+  .expense-form-container input,
+  .expense-form-container textarea,
+  .expense-form-container select {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fafafa;
+    transition: border-color 0.3s ease;
+  }
+  
+  .expense-form-container input:focus,
+  .expense-form-container textarea:focus,
+  .expense-form-container select:focus {
+    border-color: #4a7c59;
+    background-color: #ffffff;
+    outline: none;
+  }
+  
+  /* Submit button */
+  .expense-form-container button[type="submit"] {
+    background-color: #4a7c59;
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 0.85rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .expense-form-container button[type="submit"]:hover {
+    background-color: #3a6246;
+  }
+  
+  /* Back button */
+  .back-button {
+    background: none;
+    border: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #4a7c59;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    text-decoration: underline;
+    text-align: left;
+  }
+  
+  .back-button:hover {
+    color: #2e5037;
+  }
+  
+  /* Responsive tweaks */
+  @media screen and (max-width: 600px) {
+    .expense-form-container {
+      padding: 1.25rem 1rem;
+      border-radius: 12px;
+    }
+  
+    .expense-form-container h2 {
+      font-size: 1.5rem;
+    }
+  
+    .expense-form-container input,
+    .expense-form-container textarea{
+      font-size: 0.95rem;
+      padding: 0.65rem 0.9rem;
+    }
+  
+    .expense-form-container button[type="submit"] {
+      font-size: 1rem;
+      padding: 0.75rem;
+    }
+  } 
+  
+  /* Error message */
+  .expense-form-container .error {
+    color: red;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 0.75rem;
+  }
+  .expense-form-container select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23666' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+  }
+  
