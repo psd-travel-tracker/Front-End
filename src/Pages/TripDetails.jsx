@@ -41,7 +41,7 @@ export default function TripDetails() {
             setLoading(false);
         }
     }
-    async function fetchData() {
+    async function fetchExpenses() {
           try {
               const response = await fetch(`http://localhost:3001/expenses?tripId=${id}`); 
               if (!response.ok) {
@@ -60,7 +60,7 @@ export default function TripDetails() {
       }
       useEffect(() => {
         fetchAllTrips();
-        fetchData();
+        fetchExpenses();
       }, []);
 
     if (loading) return <p>Loading...</p>;
@@ -73,8 +73,12 @@ export default function TripDetails() {
             <h1 className= "Trip-Detail-trip-title">{tripName}</h1>
             <p>Details about the trip with ID: {id}</p>
             <Chart />
-            <ExpenseList tripId={id}/>
-            <button className="create-trip-button" onClick={() => navigate(`/trip-details/${id}/create-expense`)}>Add expense</button>
+            <button className="create-trip-button" onClick={() => 
+            navigate(`/trip-details/${id}/create-expense`)}>
+            Add expense
+            </button>
+            <ExpenseList expenses={expenses}/>
+            
         </div>
     )
 }
