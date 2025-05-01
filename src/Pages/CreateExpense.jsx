@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
 import { reverseCategoryMap } from '../utils/categoryMap.js';
-//import '../Style/trip_details.css'; 
-import '../Style/create_expense.css'; // Assuming you have a CSS file for styling
+import '../Style/trip_details.css'; 
+//import '../Style/create_expense.css'; // Assuming you have a CSS file for styling
 
 export default function CreateExpense() {
     const navigate = useNavigate();

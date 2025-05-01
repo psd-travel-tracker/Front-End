@@ -1,5 +1,5 @@
 import '../Style/trip_details.css'; 
-
+//import '../Style/trip_detail_alt.css';
 export default function ExpenseCard({ name, cost, category, onEdit, onDelete }) {
   return (
     <div className="expense-card">

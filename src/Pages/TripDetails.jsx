@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Chart from '../Components/Chart';
 import '../Style/trip_details.css';
+//import '../Style/trip_detail_alt.css';
 import ExpenseList from '../Components/ExpenseList';
 import { useNavigate } from 'react-router-dom';
 
@@ -80,10 +81,12 @@ export default function TripDetails() {
         );
       }
     return (
-        <div>
+        <div className="trip-details-container">
             <h1 className= "Trip-Detail-trip-title">{tripName}</h1>
-            <p>Details about the trip with ID: {id}</p>
+            <p className="trip-subtext">Details about the trip with ID: {id}</p>
+            <div className="chart-wrapper">
             <Chart expenses = {expenses}/>
+            </div>
             <button className="create-trip-button" onClick={() => 
             navigate(`/trip-details/${id}/create-expense`)}>
             Add expense

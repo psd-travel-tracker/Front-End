@@ -2,6 +2,8 @@ import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { summarizeExpensesByCategory } from '../utils/summarizeExpenses';
 import { categoryMap } from '../utils/categoryMap';
+//import '../Style/trip_detail_alt.css';
+import '../Style/trip_details.css';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
