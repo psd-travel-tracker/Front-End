@@ -1,18 +1,187 @@
+/* --- Refined Trip Details Styling with Alignment Fixes --- */
+
 .expense-list-container {
-    max-height: 200px;
-    overflow-y: scroll;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 8px;
-  }
-  
+  padding: 1rem;
+  background: #fffce8;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-top: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.expense-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  font-family: 'Inter', sans-serif;
+  transition: background 0.2s ease;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.expense-card:hover {
+  background-color: #fcf4db;
+}
+
+.expense-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex-grow: 1;
+}
+
+.expense-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.expense-category {
+  color: #777;
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+.expense-cost {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
+  min-width: 70px;
+  text-align: right;
+}
+
+.expense-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.expense-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #555;
+  transition: color 0.2s ease;
+}
+
+.expense-actions button:hover {
+  color: #bc6c25;
+}
+
+/* Chart Wrapper Consistency */
+.chart-wrapper {
+  background-color: #fffce8;
+  padding: 2rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.chart-wrapper h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.chart-wrapper p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  color: #333;
+}
+
+/* Title Centering */
+.Trip-Detail-trip-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.trip-subtext {
+  text-align: center;
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 2rem;
+}
+
+.create-trip-button {
+  display: block;
+  margin: 2rem auto 1rem auto;
+  padding: 0.75rem 1.5rem;
+  background-color: #4a7c59;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
+}
+
+.create-trip-button:hover {
+  background-color: #3b6246;
+}
+
+.empty-expense-state {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.empty-expense-state h3 {
+  font-size: 1.5rem;
+  color: #2d2d2d;
+  margin-bottom: 0.75rem;
+}
+
+.empty-expense-state p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.empty-expense-state button {
+  background-color: #4a7c59;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.empty-expense-state button:hover {
+  background-color: #3b6246;
+}
+
+@media screen and (max-width: 600px) {
   .expense-card {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
+    flex-direction: column;
+    align-items: flex-start;
   }
+
+  .expense-cost {
+    text-align: left;
+    margin-top: 0.5rem;
+  }
+
+  .expense-info {
+    width: 100%;
+  }
+}
+
   
