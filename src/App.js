@@ -5,6 +5,7 @@ import ViewTrips from "./Pages/ViewTrips";
 import CreateNewTrip from "./Pages/CreateNewTrip";
 import TripDetails from "./Pages/TripDetails";
 import CreateExpense from "./Pages/CreateExpense";
+import AccountDetails from "./Pages/AccountDetails";
 
 export default function App() {
     return (
@@ -17,6 +18,7 @@ export default function App() {
                 <Route path="/trip-details/:id/create-expense" element={<CreateExpense/>} />
                 <Route path="/create-expense" element={<CreateExpense/>} />
                 <Route path="/trip-details/:id" element={<TripDetails/>} />
+                <Route path="/account-details" element={<AccountDetails/>}/>
             </Routes>
         </Router>
     );
