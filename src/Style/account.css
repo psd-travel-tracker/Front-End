@@ -2,11 +2,11 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 16px;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     color: #333;
     margin-bottom: 70px;
 }
-  
+
 .ProfileWrapper {
     margin-top: 32px;
 }
@@ -53,7 +53,6 @@
     background-color: #eee;
     color: #333;
 }
-  
 
 .SettingsWrapper {
     background-color: #fffce8;
@@ -61,7 +60,7 @@
     border-radius: 14px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
-  
+
 .SettingsWrapper h2 {
     font-size: 28px;
     margin-top: 0;
@@ -69,30 +68,30 @@
     font-weight: 600;
     color: #333;
 }
-  
+
 .SettingsSection {
     margin-bottom: 32px;
     padding-bottom: 24px;
     border-bottom: 1px solid #e0e0e0;
 }
-  
+
 .SettingsSection:last-child {
     border-bottom: none;
     margin-bottom: 0;
     padding-bottom: 0;
 }
-  
+
 .SettingsSection h3 {
     font-size: 22px;
     margin-bottom: 16px;
     font-weight: 600;
     color: #333;
 }
-  
+
 .NotificationToggle {
     margin-bottom: 16px;
 }
-  
+
 .ToggleLabel {
     display: flex;
     align-items: center;
@@ -100,11 +99,11 @@
     font-size: 16px;
     color: #555;
 }
-  
+
 .ToggleLabel input {
     display: none;
 }
-  
+
 .ToggleSwitch {
     position: relative;
     display: inline-block;
@@ -115,9 +114,9 @@
     margin-right: 16px;
     transition: background-color 0.2s ease;
 }
-  
+
 .ToggleSwitch::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 2px;
     left: 2px;
@@ -127,15 +126,15 @@
     background-color: white;
     transition: transform 0.2s ease;
 }
-  
+
 .ToggleLabel input:checked + .ToggleSwitch {
     background-color: #4a7c59;
 }
-  
+
 .ToggleLabel input:checked + .ToggleSwitch::after {
     transform: translateX(24px);
 }
-  
+
 .CurrencyDropdown {
     width: 200px;
     padding: 12px;
@@ -144,7 +143,7 @@
     font-size: 16px;
     background-color: white;
 }
-  
+
 .SettingsButton {
     display: block;
     margin-bottom: 12px;
@@ -160,24 +159,23 @@
     width: 300px;
     text-align: left;
 }
-  
+
 .SettingsButton:hover {
     background-color: #eee;
     color: #333;
 }
-  
-.SettingsDeleteButton {
-    color: #9E2B25;
-    border-color: #DC965A;
-}
-  
-.SettingsDeleteButton:hover {
-    background-color: #DC965A;
-    color: #9E2B25;
-    border-color: #9E2B25;
 
+.SettingsDeleteButton {
+    color: #9e2b25;
+    border-color: #dc965a;
 }
-  
+
+.SettingsDeleteButton:hover {
+    background-color: #dc965a;
+    color: #9e2b25;
+    border-color: #9e2b25;
+}
+
 @media screen and (max-width: 768px) {
     .ProfileHeader {
         flex-direction: column;
